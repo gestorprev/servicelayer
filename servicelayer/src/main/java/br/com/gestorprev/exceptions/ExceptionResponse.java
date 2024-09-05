@@ -1,4 +1,4 @@
-package br.com.gestorprev.servicelayer.exceptions;
+package br.com.gestorprev.exceptions;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package br.com.gestorprev.servicelayer;
+package br.com.gestorprev;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

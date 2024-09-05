@@ -8,7 +8,7 @@
 		<version>3.4.0-M2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.gestorprev.servicelayer</groupId>
+	<groupId>br.com.gestorprev</groupId>
 	<artifactId>servicelayer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>servicelayer</name>
