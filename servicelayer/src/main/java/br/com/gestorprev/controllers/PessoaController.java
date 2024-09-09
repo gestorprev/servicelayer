@@ -14,7 +14,7 @@ import br.com.gestorprev.model.Pessoa;
 import br.com.gestorprev.services.PessoaServices;
 
 @RestController
-@RequestMapping("/pessoa")
+@RequestMapping("/pessoa")//projeto start aqui
 public class PessoaController {
 	
 	@Autowired

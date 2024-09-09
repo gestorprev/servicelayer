@@ -20,12 +20,12 @@ public class PessoaServices {
 
 		logger.info("Finding all people!");
 		
-		List<Pessoa> persons = new ArrayList<>();
+		List<Pessoa> pessoas = new ArrayList<>();
 		for (int i = 0; i < 8; i++) {
 			Pessoa pessoa = mockPessoa(i);
-			persons.add(pessoa);
+			pessoas.add(pessoa);
 		}
-		return persons;
+		return pessoas;
 	}
 
 	public Pessoa  findById(String id) {
