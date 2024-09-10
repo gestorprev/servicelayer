@@ -40,6 +40,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		
 		<!-- for Unit Tests support -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -65,12 +73,7 @@
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>mssql-jdbc</artifactId>
         </dependency> 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
+
 	</dependencies>
 
   <build>
@@ -84,9 +87,9 @@
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
 				<configuration>
-					<url>jdbc:sqlserver://localhost;databaseName=rest_with_spring_boot_udemy</url>
-					<user>sa</user>
-					<password>admin123!</password>
+					<url>jdbc:sqlserver://45.65.239.1:14340;databaseName=Teste;encrypt=false</url>
+					<user>bw</user>
+					<password>BW9512bw</password>
 				</configuration>
 				<dependencies>
 					<dependency>

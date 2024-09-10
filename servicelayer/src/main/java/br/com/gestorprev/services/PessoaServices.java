@@ -1,69 +1,65 @@
 package br.com.gestorprev.services;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import br.com.gestorprev.model.Pessoa;
+import br.com.gestorprev.repositories.PessoaRepository;
 
 @Service
 public class PessoaServices {
 	
-	private final AtomicLong counter = new AtomicLong();
-	
 	private Logger logger = Logger.getLogger(PessoaServices.class.getName());
 
+	@Autowired
+	PessoaRepository repository;
+	
 	public List<Pessoa> findAll() {
 
 		logger.info("Finding all people!");
 		
-		List<Pessoa> pessoas = new ArrayList<>();
-		for (int i = 0; i < 8; i++) {
-			Pessoa pessoa = mockPessoa(i);
-			pessoas.add(pessoa);
-		}
-		return pessoas;
+
+		return repository.findAll();
 	}
 
-	public Pessoa  findById(String id) {
+	public Pessoa  findById(Long id) {
 		
 		logger.info("Finding one person!");
 		
-		Pessoa pessoa = new Pessoa();
-		pessoa.setId(counter.incrementAndGet());
-		pessoa.setCpf("34724772883");
-		pessoa.setNome("Rodrigo");
-		return pessoa;
+		return repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Id não encontrado!"));
 	}
 	
 	public Pessoa create(Pessoa pessoa) {
 
 		logger.info("Creating one person!");
 		
-		return pessoa;
+		return repository.save(pessoa);
 	}
 	
 	public Pessoa update(Pessoa pessoa) {
 		
 		logger.info("Updating one person!");
-		
-		return pessoa;
+
+		var entity = repository.findById(pessoa.getId())
+				.orElseThrow(() -> new ResourceNotFoundException("Id não encontrado!"));
+			entity.setCpf(pessoa.getCpf());
+			entity.setNome(pessoa.getNome());
+
+			return repository.save(pessoa);
 	}
 	
-	public void delete(String id) {
+	public void delete(Long id) {
 		
 		logger.info("Deleting one person!");
+		
+		var entity = repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Id não encontrado!"));
+		repository.delete(entity);
 	}
 	
-	private Pessoa mockPessoa(int i) {
-		
-		Pessoa pessoa = new Pessoa();
-		pessoa.setId(counter.incrementAndGet());
-		pessoa.setCpf("cpf " + i);
-		pessoa.setNome("nome " + i);
-		return pessoa;
-	}
 }
