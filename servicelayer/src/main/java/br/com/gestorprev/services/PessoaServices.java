@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
+import br.com.gestorprev.data.vo.v1.PessoaVO;
+import br.com.gestorprev.mapper.DozerMapper;
 import br.com.gestorprev.model.Pessoa;
 import br.com.gestorprev.repositories.PessoaRepository;
 
@@ -18,30 +20,34 @@ public class PessoaServices {
 	@Autowired
 	PessoaRepository repository;
 	
-	public List<Pessoa> findAll() {
+	public List<PessoaVO> findAll() {
 
 		logger.info("Finding all people!");
 		
 
-		return repository.findAll();
+		return DozerMapper.parseListObjects(repository.findAll(), PessoaVO.class);
 	}
 
-	public Pessoa  findById(Long id) {
+	public PessoaVO findById(Long id) {
 		
 		logger.info("Finding one person!");
 		
-		return repository.findById(id)
+		var entity = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Id não encontrado!"));
+		return DozerMapper.parseObject(entity, PessoaVO.class);
 	}
 	
-	public Pessoa create(Pessoa pessoa) {
+	public PessoaVO create(PessoaVO pessoa) {
 
 		logger.info("Creating one person!");
 		
-		return repository.save(pessoa);
+		var entity = DozerMapper.parseObject(pessoa, Pessoa.class);
+		var vo = DozerMapper.parseObject(repository.save(entity),PessoaVO.class);
+		return vo;
+		
 	}
 	
-	public Pessoa update(Pessoa pessoa) {
+	public PessoaVO update(PessoaVO pessoa) {
 		
 		logger.info("Updating one person!");
 
@@ -50,7 +56,8 @@ public class PessoaServices {
 			entity.setCpf(pessoa.getCpf());
 			entity.setNome(pessoa.getNome());
 
-			return repository.save(pessoa);
+			var vo = DozerMapper.parseObject(repository.save(entity),PessoaVO.class);
+			return vo;
 	}
 	
 	public void delete(Long id) {

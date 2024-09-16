@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.gestorprev.model.Pessoa;
+import br.com.gestorprev.data.vo.v1.PessoaVO;
 import br.com.gestorprev.services.PessoaServices;
 
 @RestController
@@ -27,25 +27,25 @@ public class PessoaController {
 	
 	//@RequestMapping(method=RequestMethod.GET,
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Pessoa> findAll() {
+	public List<PessoaVO> findAll() {
 		return service.findAll();
 	}
 	
 	@GetMapping(value = "/{id}",
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public Pessoa findById(@PathVariable(value = "id") Long id) {
+	public PessoaVO findById(@PathVariable(value = "id") Long id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public Pessoa create(@RequestBody Pessoa pessoa) {
+	public PessoaVO create(@RequestBody PessoaVO pessoa) {
 		return service.create(pessoa);
 	}
 	
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public Pessoa update(@RequestBody Pessoa pessoa) {
+	public PessoaVO update(@RequestBody PessoaVO pessoa) {
 		return service.update(pessoa);
 	}
 	
