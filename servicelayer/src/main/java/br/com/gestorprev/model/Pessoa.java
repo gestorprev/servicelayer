@@ -20,11 +20,11 @@ public class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "CPF", nullable = false, length = 11) //se for igual ao banco só deixo @Column
-	private String cpf;
-	
 	@Column(name = "Nome", nullable = false, length = 100)
 	private String nome;
+	
+	@Column(name = "CPF", nullable = false, length = 11) //se for igual ao banco só deixo @Column
+	private String cpf;
 	
 	public Pessoa() {}
 
@@ -35,7 +35,15 @@ public class Pessoa implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public String getNome() {
+		return nome;
+	}
 
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
 	public String getCpf() {
 		return cpf;
 	}
@@ -44,31 +52,23 @@ public class Pessoa implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public String getNome() {
-		return nome;
-	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	@Override
+	
+		@Override
 	public int hashCode() {
 		return Objects.hash(cpf, id, nome);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Pessoa other = (Pessoa) obj;
-		return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
-	}
-	
-	
-	
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Pessoa other = (Pessoa) obj;
+			return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id)
+					&& Objects.equals(nome, other.nome);
+		}
 }
