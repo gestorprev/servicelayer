@@ -19,7 +19,7 @@ import br.com.gestorprev.data.vo.v2.PessoaV2;
 import br.com.gestorprev.services.PessoaServices;
 
 @RestController
-@RequestMapping("/pessoa")//projeto inicia aqui
+@RequestMapping("/api")//projeto inicia aqui
 public class PessoaController {
 	
 	@Autowired
@@ -28,39 +28,39 @@ public class PessoaController {
 	
 	//getall
 	//@RequestMapping(method=RequestMethod.GET,
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/v1/pessoa", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<PessoaV1> findAll() {
 		return service.findAll();
 	}
 	
 	//getid
-	@GetMapping(value = "/{id}",
+	@GetMapping(value = "/v1/pessoa/{id}",
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public PessoaV1 findById(@PathVariable(value = "id") Long id) {
 		return service.findById(id);
 	}
 
 	//post
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+	@PostMapping(value = "/v1/pessoa", consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public PessoaV1 create(@RequestBody PessoaV1 pessoa) {
 		return service.create(pessoa);
 	}
-	@PostMapping(value = "/v2", consumes = MediaType.APPLICATION_JSON_VALUE,
+	@PostMapping(value = "/v2/pessoa", consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public PessoaV2 createV2(@RequestBody PessoaV2 pessoa) {
 		return service.createV2(pessoa);
 	}
 	
 	//put
-	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+	@PutMapping(value = "/v1/pessoa", consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public PessoaV1 update(@RequestBody PessoaV1 pessoa) {
 		return service.update(pessoa);
 	}
 	
 	//delete
-	@DeleteMapping(value = "/{id}")
+	@DeleteMapping(value = "/v1/pessoa/{id}")
 	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
