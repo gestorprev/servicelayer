@@ -3,13 +3,24 @@ package br.com.gestorprev.data.vo.v1;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+//ordem do json
+@JsonPropertyOrder({"id","nome","idSexo", "cpf","rg"})
 public class PessoaV1 implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
+	//@JsonIgnore//não mostrar no json
 	private String nome;
+	@JsonProperty("idSexo")//renomear como vai aparecer no json
+	private Long idSexo;
 	private String cpf;
+	@JsonProperty("rg")
+	private String rgN;
 	
 	public PessoaV1() {}
 
@@ -29,6 +40,14 @@ public class PessoaV1 implements Serializable {
 		this.nome = nome;
 	}
 	
+	public Long getIdSexo() {
+		return idSexo;
+	}
+
+	public void setIdSexo(Long idSexo) {
+		this.idSexo = idSexo;
+	}
+
 	public String getCpf() {
 		return cpf;
 	}
@@ -37,9 +56,18 @@ public class PessoaV1 implements Serializable {
 		this.cpf = cpf;
 	}
 
+	
+	public String getRgN() {
+		return rgN;
+	}
+
+	public void setRgN(String rgN) {
+		this.rgN = rgN;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(cpf, id, nome);
+		return Objects.hash(cpf, id, idSexo, nome, rgN);
 	}
 
 	@Override
@@ -51,7 +79,8 @@ public class PessoaV1 implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		PessoaV1 other = (PessoaV1) obj;
-		return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome);
+		return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id) && Objects.equals(idSexo, other.idSexo)
+				&& Objects.equals(nome, other.nome) && Objects.equals(rgN, other.rgN);
 	}
 }
 /*

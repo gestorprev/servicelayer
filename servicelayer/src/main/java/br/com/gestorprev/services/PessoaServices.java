@@ -27,20 +27,32 @@ public class PessoaServices {
 	public List<PessoaV1> findAll() {
 
 		logger.info("Finding all people!");
-		
+		/*
 		return DozerMapper.parseListObjects(repository.findAll(), PessoaV1.class);
+		*/
+		var entity = repository.findAll();
+		var vo = mapper.convertEntityToVoListV1(entity);
+
+		return vo;
 	}
 	
 	public PessoaV1 findById(Long id) {
 		
 		logger.info("Finding one person!");
 		
+		/*
 		var entity = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Id não encontrado!"));
 		return DozerMapper.parseObject(entity, PessoaV1.class);
+		*/
+		var entity = repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Id não encontrado!"));
+		var vo = mapper.convertEntityToVoV1(entity);
+
+		return vo;
 	}
 	
-	//create - CONFUSO DOZER OU MAPPER?
+	//create
 	public PessoaV1 create(PessoaV1 pessoa) {
 
 		logger.info("Creating one person!");
@@ -69,10 +81,12 @@ public class PessoaServices {
 
 		var entity = repository.findById(pessoa.getId())
 				.orElseThrow(() -> new ResourceNotFoundException("Id não encontrado!"));
-			entity.setCpf(pessoa.getCpf());
 			entity.setNome(pessoa.getNome());
+			entity.setCpf(pessoa.getCpf());
+			entity.setRg(pessoa.getRgN());
+		//var vo = DozerMapper.parseObject(repository.save(entity),PessoaV1.class);
+		var vo = mapper.convertEntityToVoV1(repository.save(entity));
 
-		var vo = DozerMapper.parseObject(repository.save(entity),PessoaV1.class);
 		return vo;
 	}
 	

@@ -22,9 +22,12 @@ public class Pessoa implements Serializable {
 	
 	@Column(name = "Nome", nullable = false, length = 100)
 	private String nome;
-	
+
 	@Column(name = "CPF", nullable = false, length = 11) //se for igual ao banco só deixo @Column
 	private String cpf;
+	
+	@Column(name = "RGN", nullable = true, length = 15)
+	private String rg;
 	
 	public Pessoa() {}
 
@@ -53,11 +56,18 @@ public class Pessoa implements Serializable {
 	}
 
 
-	
-		@Override
-	public int hashCode() {
-		return Objects.hash(cpf, id, nome);
+		public String getRg() {
+		return rg;
 	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(cpf, id, nome, rg);
+		}
 
 		@Override
 		public boolean equals(Object obj) {
@@ -68,7 +78,7 @@ public class Pessoa implements Serializable {
 			if (getClass() != obj.getClass())
 				return false;
 			Pessoa other = (Pessoa) obj;
-			return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id)
-					&& Objects.equals(nome, other.nome);
+			return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
+					&& Objects.equals(rg, other.rg);
 		}
 }

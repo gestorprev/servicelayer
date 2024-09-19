@@ -1,5 +1,8 @@
 package br.com.gestorprev.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import br.com.gestorprev.data.vo.v2.PessoaV2;
@@ -14,15 +17,36 @@ public class PessoaMapper {
 		
 		vo.setId(pessoa.getId());
 		vo.setNome(pessoa.getNome());
+		//vo.setIdSexo(pessoa.getIdSexo());
 		vo.setCpf(pessoa.getCpf());
+		vo.setRgN(pessoa.getRg() );
 		return vo;
 	}
 	
+    public List<PessoaV1> convertEntityToVoListV1(List<Pessoa> pessoas) {
+        List<PessoaV1> voList = new ArrayList<>();
+        for (Pessoa pessoa : pessoas) {
+            PessoaV1 vo = new PessoaV1();
+
+            vo.setId(pessoa.getId());
+            vo.setNome(pessoa.getNome());
+            // vo.setIdSexo(pessoa.getIdSexo()); 
+            vo.setCpf(pessoa.getCpf());
+            vo.setRgN(pessoa.getRg()); 
+
+            voList.add(vo); 
+        }
+
+        return voList; 
+    }
+
 	public Pessoa convertVoToEntityV1(PessoaV1 pessoa) {
 		Pessoa entity = new Pessoa();
 		entity.setId(pessoa.getId());
 		entity.setNome(pessoa.getNome());
+		//entity.setIdSexo(pessoa.getIdSexo());
 		entity.setCpf(pessoa.getCpf());
+		entity.setRg(pessoa.getRgN());
 		return entity;
 	}
 	
