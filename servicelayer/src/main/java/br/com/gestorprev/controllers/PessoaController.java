@@ -28,33 +28,33 @@ public class PessoaController {
 	
 	//getall
 	//@RequestMapping(method=RequestMethod.GET,
-	@GetMapping(value = "/v1/pessoa", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/v1/pessoa", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
 	public List<PessoaV1> findAll() {
 		return service.findAll();
 	}
 	
 	//getid
 	@GetMapping(value = "/v1/pessoa/{id}",
-			produces = MediaType.APPLICATION_JSON_VALUE)
+			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
 	public PessoaV1 findById(@PathVariable(value = "id") Long id) {
 		return service.findById(id);
 	}
 
 	//post
-	@PostMapping(value = "/v1/pessoa", consumes = MediaType.APPLICATION_JSON_VALUE,
-			produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/v1/pessoa", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
 	public PessoaV1 create(@RequestBody PessoaV1 pessoa) {
 		return service.create(pessoa);
 	}
-	@PostMapping(value = "/v2/pessoa", consumes = MediaType.APPLICATION_JSON_VALUE,
-			produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/v2/pessoa", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
 	public PessoaV2 createV2(@RequestBody PessoaV2 pessoa) {
 		return service.createV2(pessoa);
 	}
 	
 	//put
-	@PutMapping(value = "/v1/pessoa", consumes = MediaType.APPLICATION_JSON_VALUE,
-			produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "/v1/pessoa", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
+			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE})
 	public PessoaV1 update(@RequestBody PessoaV1 pessoa) {
 		return service.update(pessoa);
 	}

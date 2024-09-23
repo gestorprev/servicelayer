@@ -3,17 +3,20 @@ package br.com.gestorprev.data.vo.v1;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 //ordem do json
 @JsonPropertyOrder({"id","nome","idSexo", "cpf","rg"})
-public class PessoaV1 implements Serializable {
+public class PessoaV1 extends RepresentationModel<PessoaV1> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Long id;
+	@JsonProperty("id")//renomear como vai aparecer no json
+	private Long key; //não posso chamar de id, pois o hateos já tem 
 	//@JsonIgnore//não mostrar no json
 	private String nome;
 	@JsonProperty("idSexo")//renomear como vai aparecer no json
@@ -24,12 +27,12 @@ public class PessoaV1 implements Serializable {
 	
 	public PessoaV1() {}
 
-	public Long getId() {
-		return id;
+	public Long getKey() {
+		return key;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setKey(Long key) {
+		this.key = key;
 	}
 
 	public String getNome() {
@@ -67,7 +70,7 @@ public class PessoaV1 implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cpf, id, idSexo, nome, rgN);
+		return Objects.hash(cpf, key, idSexo, nome, rgN);
 	}
 
 	@Override
@@ -79,7 +82,7 @@ public class PessoaV1 implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		PessoaV1 other = (PessoaV1) obj;
-		return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id) && Objects.equals(idSexo, other.idSexo)
+		return Objects.equals(cpf, other.cpf) && Objects.equals(key, other.key) && Objects.equals(idSexo, other.idSexo)
 				&& Objects.equals(nome, other.nome) && Objects.equals(rgN, other.rgN);
 	}
 }
