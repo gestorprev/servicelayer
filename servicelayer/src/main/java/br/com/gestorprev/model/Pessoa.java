@@ -22,12 +22,13 @@ public class Pessoa implements Serializable {
 	
 	@Column(name = "Nome", nullable = false, length = 100)
 	private String nome;
+	
+	private long idestadocivil;
 
 	@Column(name = "CPF", nullable = false, length = 11) //se for igual ao banco só deixo @Column
 	private String cpf;
 	
-	@Column(name = "RGN", nullable = true, length = 15)
-	private String rg;
+	private String rgn;
 	
 	public Pessoa() {}
 
@@ -47,6 +48,14 @@ public class Pessoa implements Serializable {
 		this.nome = nome;
 	}
 	
+	public long getIdestadocivil() {
+		return idestadocivil;
+	}
+
+	public void setIdestadocivil(long idestadocivil) {
+		this.idestadocivil = idestadocivil;
+	}
+
 	public String getCpf() {
 		return cpf;
 	}
@@ -56,17 +65,19 @@ public class Pessoa implements Serializable {
 	}
 
 
-		public String getRg() {
-		return rg;
+
+
+		public String getRgn() {
+		return rgn;
 	}
 
-	public void setRg(String rg) {
-		this.rg = rg;
+	public void setRgn(String rgn) {
+		this.rgn = rgn;
 	}
 
 		@Override
 		public int hashCode() {
-			return Objects.hash(cpf, id, nome, rg);
+			return Objects.hash(cpf, id, idestadocivil, nome, rgn);
 		}
 
 		@Override
@@ -78,7 +89,8 @@ public class Pessoa implements Serializable {
 			if (getClass() != obj.getClass())
 				return false;
 			Pessoa other = (Pessoa) obj;
-			return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
-					&& Objects.equals(rg, other.rg);
+			return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id)
+					&& idestadocivil == other.idestadocivil && Objects.equals(nome, other.nome)
+					&& Objects.equals(rgn, other.rgn);
 		}
 }

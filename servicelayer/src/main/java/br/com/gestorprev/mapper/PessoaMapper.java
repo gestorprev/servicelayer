@@ -18,9 +18,9 @@ public class PessoaMapper {
 
 		vo.setKey(pessoa.getId());
 		vo.setNome(pessoa.getNome());
-		//vo.setIdSexo(pessoa.getIdSexo());
+		vo.setIdestadocivil(pessoa.getIdestadocivil());
 		vo.setCpf(pessoa.getCpf());
-		vo.setRgN(pessoa.getRg() );
+		vo.setRgn(pessoa.getRgn() );
 		return vo;
 	}
 	
@@ -31,9 +31,9 @@ public class PessoaMapper {
 
             vo.setKey(pessoa.getId());
             vo.setNome(pessoa.getNome());
-            // vo.setIdSexo(pessoa.getIdSexo()); 
+            vo.setIdestadocivil(pessoa.getIdestadocivil()); 
             vo.setCpf(pessoa.getCpf());
-            vo.setRgN(pessoa.getRg()); 
+            vo.setRgn(pessoa.getRgn()); 
 
             voList.add(vo); 
         }
@@ -45,13 +45,13 @@ public class PessoaMapper {
 		Pessoa entity = new Pessoa();
 		entity.setId(pessoa.getKey());
 		entity.setNome(pessoa.getNome());
-		//entity.setIdSexo(pessoa.getIdSexo());
+		entity.setIdestadocivil(pessoa.getIdestadocivil());
 		entity.setCpf(pessoa.getCpf());
-		entity.setRg(pessoa.getRgN());
+		entity.setRgn(pessoa.getRgn());
 		return entity;
 	}
 	
-	//v2
+	//v2--------------------------------------------------------------------
 	public PessoaV2 convertEntityToVoV2(Pessoa pessoa) {
 		PessoaV2 vo = new PessoaV2();
 		
