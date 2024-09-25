@@ -23,7 +23,7 @@ public class Pessoa implements Serializable {
 	@Column(name = "Nome", nullable = false, length = 100)
 	private String nome;
 	
-	private long idestadocivil;
+	private Long idestadocivil;
 
 	@Column(name = "CPF", nullable = false, length = 11) //se for igual ao banco só deixo @Column
 	private String cpf;
@@ -64,10 +64,7 @@ public class Pessoa implements Serializable {
 		this.cpf = cpf;
 	}
 
-
-
-
-		public String getRgn() {
+	public String getRgn() {
 		return rgn;
 	}
 

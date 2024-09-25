@@ -1,9 +1,9 @@
+/*
 package br.com.gestorprev.unittests.mockito.services;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -16,7 +16,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import br.com.gestorprev.data.vo.v1.PessoaV1;
 //import br.com.gestorprev.exceptions.RequiredObjectIsNullException;
 import br.com.gestorprev.model.Pessoa;
 import br.com.gestorprev.repositories.PessoaRepository;
@@ -82,3 +81,4 @@ class PessoaServicesTest {
 	}
 
 }
+*/

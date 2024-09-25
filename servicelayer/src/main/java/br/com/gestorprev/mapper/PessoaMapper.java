@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import br.com.gestorprev.data.vo.v2.PessoaV2;
 import br.com.gestorprev.data.vo.v1.PessoaV1;
 import br.com.gestorprev.model.Pessoa;
-import java.util.logging.Logger;
 
 @Service
 public class PessoaMapper {

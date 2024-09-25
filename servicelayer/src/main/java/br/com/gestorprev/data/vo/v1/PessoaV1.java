@@ -5,7 +5,6 @@ import java.util.Objects;
 
 import org.springframework.hateoas.RepresentationModel;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
@@ -26,7 +25,7 @@ public class PessoaV1 extends RepresentationModel<PessoaV1> implements Serializa
 	
 	@JsonProperty("idEstadoCivil")
 	@Mapping("idestadocivil")
-	private long idestadocivil;
+	private Long idestadocivil;
 
 	private String cpf;
 	

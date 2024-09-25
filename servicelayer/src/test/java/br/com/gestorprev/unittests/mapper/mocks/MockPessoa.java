@@ -38,7 +38,7 @@ public class MockPessoa {
     	pessoa.setId(number.longValue());
     	pessoa.setCpf("34724772883" + number);
     	pessoa.setNome("Rodrigo Cicoti" + number);
-    	pessoa.setRg("34126" + number);
+    	pessoa.setRgn("34126" + number);
         return pessoa;
     }
 
@@ -47,7 +47,7 @@ public class MockPessoa {
     	pessoa.setKey(number.longValue());
     	pessoa.setCpf("34724772883" + number);
     	pessoa.setNome("Rodrigo Cicoti" + number);
-    	pessoa.setRgN("34126" + number);
+    	pessoa.setRgn("34126" + number);
         return pessoa;
     }
 
