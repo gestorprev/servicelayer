@@ -1,6 +1,7 @@
 package br.com.gestorprev.data.vo.v1;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 import org.springframework.hateoas.RepresentationModel;
@@ -9,8 +10,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
 
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+
 //ordem do json
-@JsonPropertyOrder({"id","nome","idestadocivil", "cpf","rgn"})
+@JsonPropertyOrder({"id","nome","idestadocivil", "cpf","rgn","datanascimento"})
 public class PessoaV1 extends RepresentationModel<PessoaV1> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -24,14 +28,15 @@ public class PessoaV1 extends RepresentationModel<PessoaV1> implements Serializa
 	private String nome;
 	
 	@JsonProperty("idEstadoCivil")
-	@Mapping("idestadocivil")
 	private Long idestadocivil;
 
 	private String cpf;
 	
-	//@JsonProperty("rgNumero")
-	@Mapping("rgn")
 	private String rgn;
+	
+	@JsonProperty("dataNascimento")
+	private Date datanascimento;
+	
 	
 	public PessoaV1() {}
 
@@ -68,8 +73,6 @@ public class PessoaV1 extends RepresentationModel<PessoaV1> implements Serializa
 		this.cpf = cpf;
 	}
 
-	
-
 	public String getRgn() {
 		return rgn;
 	}
@@ -78,11 +81,19 @@ public class PessoaV1 extends RepresentationModel<PessoaV1> implements Serializa
 		this.rgn = rgn;
 	}
 
+	public Date getDatanascimento() {
+		return datanascimento;
+	}
+
+	public void setDatanascimento(Date datanascimento) {
+		this.datanascimento = datanascimento;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(cpf, idestadocivil, key, nome, rgn);
+		result = prime * result + Objects.hash(cpf, datanascimento, idestadocivil, key, nome, rgn);
 		return result;
 	}
 
@@ -95,7 +106,8 @@ public class PessoaV1 extends RepresentationModel<PessoaV1> implements Serializa
 		if (getClass() != obj.getClass())
 			return false;
 		PessoaV1 other = (PessoaV1) obj;
-		return Objects.equals(cpf, other.cpf) && idestadocivil == other.idestadocivil && Objects.equals(key, other.key)
+		return Objects.equals(cpf, other.cpf) && Objects.equals(datanascimento, other.datanascimento)
+				&& Objects.equals(idestadocivil, other.idestadocivil) && Objects.equals(key, other.key)
 				&& Objects.equals(nome, other.nome) && Objects.equals(rgn, other.rgn);
 	}
 }

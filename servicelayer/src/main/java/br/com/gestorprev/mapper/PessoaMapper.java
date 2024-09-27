@@ -20,6 +20,7 @@ public class PessoaMapper {
 		vo.setIdestadocivil(pessoa.getIdestadocivil());
 		vo.setCpf(pessoa.getCpf());
 		vo.setRgn(pessoa.getRgn() );
+		vo.setDatanascimento(pessoa.getDatanascimento());
 		return vo;
 	}
 	
@@ -33,6 +34,7 @@ public class PessoaMapper {
             vo.setIdestadocivil(pessoa.getIdestadocivil()); 
             vo.setCpf(pessoa.getCpf());
             vo.setRgn(pessoa.getRgn()); 
+            vo.setDatanascimento(pessoa.getDatanascimento());
 
             voList.add(vo); 
         }
@@ -47,9 +49,11 @@ public class PessoaMapper {
 		entity.setIdestadocivil(pessoa.getIdestadocivil());
 		entity.setCpf(pessoa.getCpf());
 		entity.setRgn(pessoa.getRgn());
+		entity.setDatanascimento(pessoa.getDatanascimento());
 		return entity;
 	}
 	
+	//APENAS PARA EXEMPLO---------------------------------------------------
 	//v2--------------------------------------------------------------------
 	public PessoaV2 convertEntityToVoV2(Pessoa pessoa) {
 		PessoaV2 vo = new PessoaV2();

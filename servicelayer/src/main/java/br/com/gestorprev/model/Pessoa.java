@@ -1,6 +1,7 @@
 package br.com.gestorprev.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -20,15 +21,17 @@ public class Pessoa implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "Nome", nullable = false, length = 100)
+	@Column(nullable = false, length = 100)
 	private String nome;
 	
 	private Long idestadocivil;
 
-	@Column(name = "CPF", nullable = false, length = 11) //se for igual ao banco só deixo @Column
+	@Column(nullable = false, length = 11) //se for igual ao banco só deixo @Column
 	private String cpf;
 	
 	private String rgn;
+	
+	private Date dataNascimento;
 	
 	public Pessoa() {}
 
@@ -72,9 +75,17 @@ public class Pessoa implements Serializable {
 		this.rgn = rgn;
 	}
 
+	public Date getDatanascimento() {
+		return dataNascimento;
+	}
+
+	public void setDatanascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
 		@Override
 		public int hashCode() {
-			return Objects.hash(cpf, id, idestadocivil, nome, rgn);
+			return Objects.hash(cpf, dataNascimento, id, idestadocivil, nome, rgn);
 		}
 
 		@Override
@@ -86,8 +97,8 @@ public class Pessoa implements Serializable {
 			if (getClass() != obj.getClass())
 				return false;
 			Pessoa other = (Pessoa) obj;
-			return Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id)
-					&& idestadocivil == other.idestadocivil && Objects.equals(nome, other.nome)
-					&& Objects.equals(rgn, other.rgn);
+			return Objects.equals(cpf, other.cpf) && Objects.equals(dataNascimento, other.dataNascimento)
+					&& Objects.equals(id, other.id) && Objects.equals(idestadocivil, other.idestadocivil)
+					&& Objects.equals(nome, other.nome) && Objects.equals(rgn, other.rgn);
 		}
 }
