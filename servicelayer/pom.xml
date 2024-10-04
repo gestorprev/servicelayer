@@ -26,10 +26,13 @@
 		<tag/>
 		<url/>
 	</scm>
+	<!-- versions -->
 	<properties>
 		<java.version>22</java.version>
 		<springdoc.version>2.6.0</springdoc.version>
 		<dozermapper.version>7.0.0</dozermapper.version>
+		<testcontainers.version>1.16.3</testcontainers.version>
+		<rest-assured.version>4.5.0</rest-assured.version>
 	</properties>
 	<dependencies>
  		<!-- for SpringBoot support -->
@@ -67,11 +70,25 @@
 		      <artifactId>spring-boot-starter-validation</artifactId>
    		</dependency>
    		
+   		<!-- TESTES -->
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${rest-assured.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>mssqlserver</artifactId>
+			<version>${testcontainers.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- TESTES -->
 		
 		<!-- for JPA support -->
 		<dependency>
@@ -92,18 +109,16 @@
             <artifactId>mssql-jdbc</artifactId>
         </dependency> 
 
-		<!-- flyway         
+		<!-- flyway -->          
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
         </dependency> 
-        
         <dependency>
 		    <groupId>org.flywaydb</groupId>
 		    <artifactId>flyway-sqlserver</artifactId>
 		</dependency>
-        -->
-        
+
         <!-- content negotiation -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -174,7 +189,7 @@
 			   <groupId>org.flywaydb</groupId>
 			   <artifactId>flyway-maven-plugin</artifactId>
 			   <configuration>
-			      <url>jdbc:sqlserver://45.65.239.1:14340;databaseName=Teste;encrypt=false</url>
+			      <url>jdbc:sqlserver://45.65.239.1:14341;databaseName=Teste;encrypt=false</url>
 			      <user>bw</user>
 			      <password>BW9512bw</password>
 			   </configuration>

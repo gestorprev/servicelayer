@@ -57,11 +57,11 @@ public class PessoaV1 extends RepresentationModel<PessoaV1> implements Serializa
 	}
 
 	
-	public long getIdestadocivil() {
+	public Long getIdestadocivil() {
 		return idestadocivil;
 	}
 
-	public void setIdestadocivil(long idestadocivil) {
+	public void setIdestadocivil(Long idestadocivil) {
 		this.idestadocivil = idestadocivil;
 	}
 

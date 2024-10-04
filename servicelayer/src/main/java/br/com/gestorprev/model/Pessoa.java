@@ -24,6 +24,7 @@ public class Pessoa implements Serializable {
 	@Column(nullable = false, length = 100)
 	private String nome;
 	
+	@Column(nullable = true)
 	private Long idestadocivil;
 
 	@Column(nullable = false, length = 11) //se for igual ao banco só deixo @Column
@@ -31,6 +32,7 @@ public class Pessoa implements Serializable {
 	
 	private String rgn;
 	
+	@Column(nullable = true)
 	private Date dataNascimento;
 	
 	public Pessoa() {}
@@ -51,11 +53,11 @@ public class Pessoa implements Serializable {
 		this.nome = nome;
 	}
 	
-	public long getIdestadocivil() {
+	public Long getIdestadocivil() {
 		return idestadocivil;
 	}
 
-	public void setIdestadocivil(long idestadocivil) {
+	public void setIdestadocivil(Long idestadocivil) {
 		this.idestadocivil = idestadocivil;
 	}
 

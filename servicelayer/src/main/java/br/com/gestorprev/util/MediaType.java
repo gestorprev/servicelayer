@@ -9,5 +9,4 @@ public class MediaType {
 
 /*
 NA CONTROLLER POSSO INFORMAR APENAS APPLICATION_JSON (SEM O VALUE) E IMPORTAR ESSA CLASSE (import br.com.gestorprev.util.MediaType)
-
 */
